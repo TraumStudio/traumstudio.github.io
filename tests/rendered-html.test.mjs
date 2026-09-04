@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
+import { clamp, sceneProgress, sceneValues, mountScrollMotion } from "../app/lib/scroll-motion.mjs";
 
 const root = new URL("../dist/client/", import.meta.url);
 
@@ -14,7 +15,7 @@ test("exports the Traum Studio homepage", async () => {
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/);
 });
 
-test("ships the bright design, artwork, and reduced-motion support", async () => {
+test("ships the dusk theme, artwork, and reduced-motion support", async () => {
   const html = await readFile(new URL("index.html", root), "utf8");
   assert.match(html, /studio-loop\.webp/);
   assert.match(html, /Pause motion/);
@@ -22,7 +23,83 @@ test("ships the bright design, artwork, and reduced-motion support", async () =>
   const theme = await readFile(new URL("../app/flagship.css", import.meta.url), "utf8");
   assert.match(theme, /prefers-reduced-motion: reduce/);
   assert.match(theme, /data-motion="paused"/);
-  assert.match(theme, /html, body \{ background: #fff/);
+  assert.match(theme, /html, body \{ background: var\(--canvas\)/);
+  const tokens = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  assert.match(tokens, /--canvas: #1b2434/);
+  assert.match(html, /data-scroll-scene="hero"/);
+  assert.match(html, /data-scroll-scene="routine"/);
+  assert.match(html, /data-scroll-scene="band"/);
+  assert.match(theme, /\.spotlight-grid \{ position: static/);
+});
+
+test("scroll choreography stays bounded and is gentler on mobile", () => {
+  assert.equal(clamp(-1), 0);
+  assert.equal(clamp(2), 1);
+  assert.equal(sceneProgress("hero", 88, 730, 900), 0);
+  assert.equal(sceneProgress("hero", -1460, 730, 900), 1);
+  assert.equal(sceneProgress("routine", 118, 1500, 900, true), 0);
+  assert.equal(sceneProgress("routine", -600, 1500, 900, true), 1);
+  for (const kind of ["hero", "routine", "band"]) {
+    for (const p of [-10, 0, .5, 1, 10]) {
+      for (const value of Object.values(sceneValues(kind, p))) assert.ok(Number.isFinite(parseFloat(value)));
+    }
+  }
+  assert.ok(parseFloat(sceneValues("hero", 1, true)["--art-y"]) < parseFloat(sceneValues("hero", 1)["--art-y"]));
+  assert.equal(sceneValues("routine", 1)["--phone-turn"], "0.00deg");
+  assert.equal(sceneValues("routine", 1)["--routine-progress"], "1.0000");
+});
+
+test("shared dusk-theme text and button tokens retain readable contrast", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const tokens = Object.fromEntries([...css.matchAll(/--([\w-]+): (#[\da-f]{6});/g)].map((match) => [match[1], match[2]]));
+  const luminance = (hex) => {
+    const rgb = hex.slice(1).match(/../g).map((channel) => parseInt(channel, 16) / 255)
+      .map((channel) => channel <= .04045 ? channel / 12.92 : ((channel + .055) / 1.055) ** 2.4);
+    return rgb[0] * .2126 + rgb[1] * .7152 + rgb[2] * .0722;
+  };
+  const contrast = (a, b) => {
+    const [lighter, darker] = [luminance(a), luminance(b)].sort((a, b) => b - a);
+    return (lighter + .05) / (darker + .05);
+  };
+  for (const background of ["canvas", "canvas-deep", "panel", "panel-2"]) {
+    for (const text of ["ink", "muted", "accent", "coral", "aqua"]) {
+      assert.ok(contrast(tokens[text], tokens[background]) >= 4.5, `${text} on ${background}`);
+    }
+  }
+  assert.ok(contrast("#ffffff", tokens["accent-fill"]) >= 4.5);
+});
+
+test("scroll controller batches events, suspends hidden tabs, and fully cleans up", () => {
+  const listeners = new Map();
+  const pending = new Map();
+  const properties = new Map();
+  const style = { setProperty: (key, value) => properties.set(key, value), removeProperty: (key) => properties.delete(key) };
+  const steps = Array.from({ length: 4 }, () => ({ dataset: {} }));
+  const scene = { dataset: { scrollScene: "routine" }, style, querySelectorAll: () => steps, getBoundingClientRect: () => ({ top: -600, height: 1500, bottom: 900 }) };
+  let serial = 0;
+  const events = { addEventListener: (name, callback) => listeners.set(name, callback), removeEventListener: (name) => listeners.delete(name) };
+  const doc = { ...events, hidden: false, documentElement: { scrollHeight: 3000, style }, querySelectorAll: () => [scene] };
+  const win = { ...events, innerHeight: 900, innerWidth: 1440, scrollY: 2100, requestAnimationFrame: (callback) => { pending.set(++serial, callback); return serial; }, cancelAnimationFrame: (id) => pending.delete(id) };
+  const flush = () => { const callbacks = [...pending.values()]; pending.clear(); callbacks.forEach((callback) => callback()); };
+  const stop = mountScrollMotion(doc, win);
+  listeners.get("scroll")(); listeners.get("scroll")(); listeners.get("resize")();
+  assert.equal(pending.size, 1);
+  flush();
+  assert.equal(pending.size, 0, "must not start a perpetual frame loop");
+  assert.equal(properties.get("--page-progress"), "1.0000");
+  assert.equal(steps[3].dataset.active, "true");
+  assert.equal(steps.filter((step) => step.dataset.active === "true").length, 1);
+  listeners.get("scroll")();
+  doc.hidden = true; listeners.get("visibilitychange")();
+  assert.equal(pending.size, 0);
+  listeners.get("scroll")(); assert.equal(pending.size, 0);
+  doc.hidden = false; listeners.get("visibilitychange")();
+  assert.equal(pending.size, 1);
+  stop();
+  assert.equal(pending.size, 0);
+  assert.equal(listeners.size, 0);
+  assert.equal(properties.size, 0);
+  assert.ok(steps.every((step) => !Object.hasOwn(step.dataset, "active")));
 });
 
 test("uses the confirmed public contact address", async () => {

@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="hero">
+      <section className="hero" data-scroll-scene="hero">
         <div className="shell hero-grid">
           <div className="hero-copy">
             <span className="eyebrow"><i className="status-dot" /> Independent Android studio</span>
@@ -41,9 +41,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section apps-section" id="apps" data-reveal>
+      <section className="section apps-section" id="apps">
         <div className="shell">
-          <div className="section-topline">
+          <div className="section-topline" data-reveal>
             <SectionHead eyebrow="Our apps" title="Made for real life." copy="Three distinct Android experiences, one shared standard: useful, understandable, and carefully made." />
             <a className="text-link section-link" href="/apps">View all apps <span aria-hidden="true">→</span></a>
           </div>
@@ -51,9 +51,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section spotlight-section" data-reveal>
+      <section className="section spotlight-section" data-scroll-scene="routine">
         <div className="shell spotlight-grid">
-          <div className="spotlight-copy">
+          <div className="spotlight-copy" data-reveal>
             <span className="eyebrow">Featured · TapRoutine</span>
             <h2>Turn repetition into a routine.</h2>
             <p>Build a sequence once. Keep it ready whenever you need it. TapRoutine turns repetitive Android interactions into reusable routines with clear, deliberate controls.</p>
@@ -62,6 +62,7 @@ export default function Home() {
           </div>
           <div className="routine-demo" aria-label="Illustrative TapRoutine workflow preview, not a live app">
             <span className="preview-caption">A routine, one step at a time.</span>
+            <div className="routine-scroll-track" aria-hidden="true"><span /></div>
             <div className="phone-frame">
               <div className="phone-top"><span>9:41</span><i /></div>
               <div className="phone-screen-head"><AppIcon app={tapRoutine} size="small" /><span><small>Routine</small><strong>Morning setup</strong></span><b>•••</b></div>
@@ -82,9 +83,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section beliefs-section" data-reveal>
+      <section className="section beliefs-section">
         <div className="shell">
-          <SectionHead eyebrow="How we build" title="A small studio with clear principles." />
+          <div data-reveal><SectionHead eyebrow="How we build" title="A small studio with clear principles." /></div>
           <div className="belief-grid">
             {[
               ["01", "Simple", "We remove unnecessary complexity so every app feels clear from the first tap."],
@@ -96,13 +97,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="studio-band"><div className="shell studio-band-grid">
+      <section className="studio-band" data-scroll-scene="band"><div className="shell studio-band-grid">
         <div><span className="big-stat">3</span><span>Apps</span></div>
         <div><span className="big-stat">1</span><span>Independent studio</span></div>
         <div><span className="big-stat big-stat--word">Android</span><span>Built mobile-first</span></div>
       </div></section>
 
-      <section className="section final-cta" data-reveal><div className="shell final-cta-inner">
+      <section className="section final-cta"><div className="shell final-cta-inner" data-reveal>
         <span className="eyebrow">What will you try first?</span><h2>Useful tools. Small adventures.<br />All in one studio.</h2>
         <p>Explore the Traum Studio collection and find your next Android app.</p>
         <a className="button button--dark" href={developerPlayUrl} target="_blank" rel="noreferrer">Find Traum Studio on Google Play <span aria-hidden="true">↗</span></a>

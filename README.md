@@ -1,6 +1,6 @@
 # Traum Studio website
 
-A static website for Traum Studio and its Android apps. It includes a bright studio homepage, original artwork, motion controls, individual app pages, support, edition-specific TapRoutine policies, terms, contact, SEO metadata, and a branded 404 page.
+A static website for Traum Studio and its Android apps. It includes a dusk-blue studio homepage, original artwork, scroll-linked motion, individual app pages, support, edition-specific TapRoutine policies, terms, contact, SEO metadata, and a branded 404 page.
 
 ## Before publishing
 
@@ -20,7 +20,7 @@ Set the appropriate `PRIVACY_POLICY_URL` in each Android release build and enter
 
 `public/studio-loop.webp` is original artwork created with built-in imagegen and encoded as WebP for fast loading, not an app screenshot. Prompt: a centered sculptural translucent cobalt-blue continuous ribbon loop with one glossy tangerine sphere and one clear glass tile, bright icy-white/sky-blue studio backdrop, editorial 3D lighting, caustics and soft shadows, square composition with crop-safe margins; no text, logos, phones, UI, or watermark.
 
-Scroll reveals are progressive enhancement. The site remains readable without JavaScript, respects reduced-motion preferences, and provides a visible pause/resume control. No analytics or tracking was added.
+Motion is progressive enhancement: layered hero parallax, staggered card reveals, a scroll-linked perspective routine preview, a sticky desktop spotlight, and a thin page-progress line. Scrolling remains native, with no scroll hijacking. One requestAnimationFrame batches geometry reads and style writes only after scroll/resize events; hidden tabs stop pending frames. Mobile uses smaller transforms and a normal document layout. Pause stops listeners and active entrance animations. Reduced-motion removes transforms and the sticky scene. All content stays readable without JavaScript. No dependencies, analytics, or tracking were added. The original artwork is preserved with a subdued CSS presentation.
 
 ## Publish with GitHub Pages
 
