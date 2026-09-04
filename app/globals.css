@@ -2,17 +2,17 @@
 
 :root {
   --ink: #080a0c;
-  --panel: #101316;
-  --panel-2: #15191d;
-  --line: rgba(255, 255, 255, 0.11);
-  --line-strong: rgba(255, 255, 255, 0.2);
-  --paper: #f3f5ef;
-  --muted: #9ba39b;
-  --muted-dark: #5e665f;
-  --accent: #c9ff57;
-  --coral: #ff785f;
-  --aqua: #63e8d7;
-  --blue: #9eb4ff;
+  --panel: #ffffff;
+  --panel-2: #eef3fc;
+  --line: #dce3ee;
+  --line-strong: #b7c5dc;
+  --paper: #f7f9ff;
+  --muted: #566278;
+  --muted-dark: #4d5b70;
+  --accent: #244be8;
+  --coral: #bb391e;
+  --aqua: #08776a;
+  --blue: #244be8;
   --radius: 28px;
   --shell: min(1180px, calc(100vw - 48px));
 }

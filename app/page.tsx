@@ -15,32 +15,33 @@ export default function Home() {
   return (
     <>
       <section className="hero">
-        <div className="hero-glow hero-glow--one" /><div className="hero-glow hero-glow--two" />
         <div className="shell hero-grid">
           <div className="hero-copy">
             <span className="eyebrow"><i className="status-dot" /> Independent Android studio</span>
-            <h1>Apps with purpose.<br /><em>Games made for fun.</em></h1>
+            <h1>Apps with<br />purpose.<br /><em>Games made<br />for fun.</em></h1>
             <p>Traum Studio creates thoughtful Android experiences—from useful tools that simplify everyday tasks to games made simply to be enjoyed.</p>
             <div className="hero-actions">
               <a className="button button--accent" href="#apps">Explore our apps <span aria-hidden="true">↓</span></a>
               <a className="button button--ghost" href={developerPlayUrl} target="_blank" rel="noreferrer">Google Play <span aria-hidden="true">↗</span></a>
             </div>
-            <div className="hero-proof" aria-label="Studio facts"><span><strong>3</strong> apps in the studio</span><span><strong>01</strong> Android first</span></div>
+            <div className="hero-proof" aria-label="Studio facts"><span><strong>3</strong> ideas to explore</span><span>Built for <strong>Android</strong></span></div>
           </div>
           <div className="hero-art" aria-label="Traum Studio app collection">
-            <div className="orbit orbit--outer" /><div className="orbit orbit--inner" />
-            <div className="hero-core"><span>TRAUM</span><strong>STUDIO</strong></div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="hero-artwork" src="/studio-loop.webp" width="1254" height="1254" alt="" fetchPriority="high" />
+            <div className="collection-caption"><span>THE TRAUM COLLECTION</span><span aria-hidden="true">↗</span></div>
+            <div className="collection-apps">
             {studioApps.map((app, index) => (
               <a className={`floating-app floating-app--${index + 1}`} href={app.href} key={app.slug} aria-label={`Discover ${app.name}`}>
-                <AppIcon app={app} /><span><small>{app.eyebrow}</small><strong>{app.name}</strong></span>
+                <AppIcon app={app} size="small" /><span><small>{app.eyebrow}</small><strong>{app.name}</strong></span><b aria-hidden="true">↗</b>
               </a>
             ))}
-            <span className="orbit-label orbit-label--one">UTILITIES</span><span className="orbit-label orbit-label--two">PLAY</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="section apps-section" id="apps">
+      <section className="section apps-section" id="apps" data-reveal>
         <div className="shell">
           <div className="section-topline">
             <SectionHead eyebrow="Our apps" title="Made for real life." copy="Three distinct Android experiences, one shared standard: useful, understandable, and carefully made." />
@@ -50,7 +51,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section spotlight-section">
+      <section className="section spotlight-section" data-reveal>
         <div className="shell spotlight-grid">
           <div className="spotlight-copy">
             <span className="eyebrow">Featured · TapRoutine</span>
@@ -59,7 +60,8 @@ export default function Home() {
             <ul className="check-list"><li>Record taps and swipes</li><li>Set delays and repeat actions</li><li>Keep routines organized on-device</li></ul>
             <a className="button button--light" href={tapRoutine.href}>Discover TapRoutine <span aria-hidden="true">→</span></a>
           </div>
-          <div className="routine-demo" aria-label="TapRoutine workflow preview">
+          <div className="routine-demo" aria-label="Illustrative TapRoutine workflow preview, not a live app">
+            <span className="preview-caption">A routine, one step at a time.</span>
             <div className="phone-frame">
               <div className="phone-top"><span>9:41</span><i /></div>
               <div className="phone-screen-head"><AppIcon app={tapRoutine} size="small" /><span><small>Routine</small><strong>Morning setup</strong></span><b>•••</b></div>
@@ -73,14 +75,14 @@ export default function Home() {
                   <div className="routine-step" key={number}><span>{number}</span><i style={{ background: color }} /><div><strong>{action}</strong><small>{detail}</small></div><b>⋮</b></div>
                 ))}
               </div>
-              <button className="run-button" type="button" tabIndex={-1}><span>▶</span> Run routine</button>
+              <div className="run-button"><span aria-hidden="true">▶</span> Routine preview</div>
             </div>
             <span className="demo-note demo-note--top">4 actions</span><span className="demo-note demo-note--bottom">Ready to run</span>
           </div>
         </div>
       </section>
 
-      <section className="section beliefs-section">
+      <section className="section beliefs-section" data-reveal>
         <div className="shell">
           <SectionHead eyebrow="How we build" title="A small studio with clear principles." />
           <div className="belief-grid">
@@ -100,7 +102,7 @@ export default function Home() {
         <div><span className="big-stat big-stat--word">Android</span><span>Built mobile-first</span></div>
       </div></section>
 
-      <section className="section final-cta"><div className="shell final-cta-inner">
+      <section className="section final-cta" data-reveal><div className="shell final-cta-inner">
         <span className="eyebrow">What will you try first?</span><h2>Useful tools. Small adventures.<br />All in one studio.</h2>
         <p>Explore the Traum Studio collection and find your next Android app.</p>
         <a className="button button--dark" href={developerPlayUrl} target="_blank" rel="noreferrer">Find Traum Studio on Google Play <span aria-hidden="true">↗</span></a>

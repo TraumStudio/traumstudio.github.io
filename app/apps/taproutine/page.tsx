@@ -21,7 +21,7 @@ export default function TapRoutinePage() {
           <div className="mini-routine mini-routine--active"><span>01</span><div><strong>Morning setup</strong><small>4 actions · 18 sec</small></div><b>▶</b></div>
           <div className="mini-routine"><span>02</span><div><strong>Daily check-in</strong><small>7 actions · 42 sec</small></div><b>▶</b></div>
           <div className="mini-routine"><span>03</span><div><strong>Quick scroll</strong><small>3 actions · 12 sec</small></div><b>▶</b></div>
-          <button type="button" tabIndex={-1}>＋ New routine</button>
+          <div className="preview-control">＋ New routine</div>
         </div>
       </AppPageHero>
 
@@ -55,9 +55,9 @@ export default function TapRoutinePage() {
             <li>You enable the service manually in Android settings.</li>
             <li>Routines run only when you choose to start them.</li>
             <li>The service is not intended to bypass security controls.</li>
-            <li>Final data-handling details will be documented in the app’s privacy policy before release.</li>
+            <li>Scripts and gesture coordinates stay in private on-device storage.</li>
           </ul>
-          <a className="text-link" href="/privacy/taproutine">Read the TapRoutine privacy draft <span>→</span></a>
+          <div className="policy-links"><a className="text-link" href="/privacy/taproutine">Free & in-app Premium policy <span aria-hidden="true">→</span></a><a className="text-link" href="/privacy/taproutine-pro">TapRoutine Pro policy <span aria-hidden="true">→</span></a></div>
         </div>
       </div></section>
     </>

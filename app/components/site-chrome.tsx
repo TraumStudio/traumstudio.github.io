@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import {
   developerPlayUrl,
-  launchEmailPlaceholder,
   studioApps,
   type StudioApp,
 } from "../lib/site-data";
@@ -82,7 +81,7 @@ export function AppIcon({ app, size = "regular" }: { app: StudioApp; size?: "sma
 
 export function AppCard({ app, featured = false }: { app: StudioApp; featured?: boolean }) {
   return (
-    <article className={`app-card app-card--${app.theme}${featured ? " app-card--featured" : ""}`}>
+    <article data-reveal className={`app-card app-card--${app.theme}${featured ? " app-card--featured" : ""}`}>
       <div className="app-card-top"><AppIcon app={app} /><span className="app-type">{app.eyebrow}</span></div>
       <div><h3>{app.name}</h3><p className="app-tagline">{app.tagline}</p><p className="app-description">{app.description}</p></div>
       <div className="chips" aria-label={`${app.name} features`}>
@@ -113,7 +112,7 @@ export function PlayButton({ app, label = "Find it on Google Play" }: { app: Stu
 }
 
 export function DraftNotice({ children }: { children?: ReactNode }) {
-  return <aside className="draft-notice"><strong>Launch note</strong><p>{children ?? <>Replace <code>{launchEmailPlaceholder}</code> and the temporary Google Play search links before publishing.</>}</p></aside>;
+  return <aside className="draft-notice"><strong>Launch note</strong><p>{children ?? <>Google Play links currently open a search. Direct store listings will be added when available.</>}</p></aside>;
 }
 
 export function AppPageHero({ app, children }: { app: StudioApp; children?: ReactNode }) {
@@ -126,7 +125,7 @@ export function AppPageHero({ app, children }: { app: StudioApp; children?: Reac
           <p className="app-page-tagline">{app.tagline}</p><p className="app-page-description">{app.description}</p>
           <div className="hero-actions"><PlayButton app={app} /><a className="button button--ghost" href="/support">Get support</a></div>
         </div>
-        <div className="app-page-visual" aria-label={`${app.name} preview`}>{children}</div>
+        <div className="app-page-visual" aria-label={`${app.name} illustrative preview, not a live app`}><span className="product-preview-label">Illustrative app preview</span>{children}</div>
       </div>
     </section>
   );

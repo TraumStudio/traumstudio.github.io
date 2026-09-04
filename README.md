@@ -1,13 +1,26 @@
 # Traum Studio website
 
-A fast, accessible, static website for Traum Studio and its Android apps. It includes the studio homepage, individual app pages, support, app-specific privacy drafts, terms, contact, SEO metadata, and a branded 404 page.
+A static website for Traum Studio and its Android apps. It includes a bright studio homepage, original artwork, motion controls, individual app pages, support, edition-specific TapRoutine policies, terms, contact, SEO metadata, and a branded 404 page.
 
 ## Before publishing
 
 1. Replace the temporary Google Play search URLs in `app/lib/site-data.ts` with the final developer and app URLs.
-2. Replace `hello@traumstudio.example` with a verified public inbox.
-3. Replace the CSS-built app previews with real icons and screenshots when they are ready.
-4. Review the privacy and terms drafts against the released apps and obtain legal advice where appropriate.
+2. Public contact is `traumclatix@gmail.com`, confirmed by the developer. Update `supportEmail` in `app/lib/site-data.ts` when it changes.
+3. Illustrative app previews are labeled; replace them with actual screenshots when available.
+4. TapRoutine policies were checked against the local free v2.3 and Pro v1.0 source on September 4, 2026. This is not legal certification or Play approval. Review final release bundles, SDK settings, target audience, Data safety answers, and applicable legal obligations before submission. Math Alarm, Hide & Seek, and Terms remain drafts.
+
+## Privacy URLs
+
+- Free TapRoutine, including in-app Premium: `https://traumstudio.github.io/privacy/taproutine`
+- Separate paid TapRoutine Pro: `https://traumstudio.github.io/privacy/taproutine-pro`
+
+Set the appropriate `PRIVACY_POLICY_URL` in each Android release build and enter the same URL in Play Console. The Android projects are separate; website changes do not change those build settings.
+
+## Artwork and motion
+
+`public/studio-loop.webp` is original artwork created with built-in imagegen and encoded as WebP for fast loading, not an app screenshot. Prompt: a centered sculptural translucent cobalt-blue continuous ribbon loop with one glossy tangerine sphere and one clear glass tile, bright icy-white/sky-blue studio backdrop, editorial 3D lighting, caustics and soft shadows, square composition with crop-safe margins; no text, logos, phones, UI, or watermark.
+
+Scroll reveals are progressive enhancement. The site remains readable without JavaScript, respects reduced-motion preferences, and provides a visible pause/resume control. No analytics or tracking was added.
 
 ## Publish with GitHub Pages
 

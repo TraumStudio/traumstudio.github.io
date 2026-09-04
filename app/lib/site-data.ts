@@ -57,4 +57,4 @@ export const developerPlayUrl =
 
 export const studioUrl = "https://traumstudio.github.io";
 
-export const launchEmailPlaceholder = "hello@traumstudio.example";
+export const supportEmail = "traumclatix@gmail.com";

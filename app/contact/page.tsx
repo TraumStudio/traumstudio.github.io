@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { DraftNotice, PageIntro } from "../components/site-chrome";
-import { launchEmailPlaceholder } from "../lib/site-data";
+import { PageIntro } from "../components/site-chrome";
+import { supportEmail } from "../lib/site-data";
 
 export const dynamic = "force-static";
 
@@ -25,10 +25,10 @@ export default function ContactPage() {
           ].map(([number, title, copy]) => <article key={number}><span>{number}</span><h2>{title}</h2><p>{copy}</p></article>)}
         </div>
         <aside className="contact-panel">
-          <span className="eyebrow">Email</span><h2>One address for now.</h2>
-          <p>The public inbox is intentionally left as a safe placeholder until a real studio address is ready.</p>
-          <code>{launchEmailPlaceholder}</code>
-          <DraftNotice>Add a verified inbox before launch, then update it once in <code>app/lib/site-data.ts</code>.</DraftNotice>
+          <span className="eyebrow">Let’s talk</span><h2>A direct line to the studio.</h2>
+          <p>For app support, privacy questions, feedback, or business enquiries, email Traum Studio. Include the app name so we can help.</p>
+          <a className="contact-email" href={`mailto:${supportEmail}`}>{supportEmail}</a>
+          <p>Please don’t send passwords, payment details, or private automation scripts.</p>
         </aside>
       </div></section>
     </>

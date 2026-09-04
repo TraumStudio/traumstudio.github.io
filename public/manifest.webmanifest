@@ -4,7 +4,7 @@
   "description": "Thoughtful Android apps, useful tools, and entertaining mobile games.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#080a0c",
-  "theme_color": "#c9ff57"
+  "background_color": "#ffffff",
+  "theme_color": "#244be8"
 }
 

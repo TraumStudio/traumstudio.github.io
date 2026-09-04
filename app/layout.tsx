@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./flagship.css";
+import { SiteMotion } from "./components/site-motion";
 import { SiteFooter, SiteHeader } from "./components/site-chrome";
 import { studioUrl } from "./lib/site-data";
 
@@ -40,6 +42,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteHeader />
         <main id="main-content">{children}</main>
         <SiteFooter />
+        <SiteMotion />
       </body>
     </html>
   );
