@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: "Traum Studio creates thoughtful Android apps, useful productivity tools, and entertaining mobile games.",
   applicationName: "Traum Studio",
   manifest: "/manifest.webmanifest",
-  keywords: ["Android apps", "Android games", "TapRoutine", "Math Alarm", "Traum Studio"],
+  keywords: ["Android apps", "Android games", "TapRoutine", "Math Alarm", "Luma", "Password manager", "Aeri", "Touchless control", "Traum Studio"],
   openGraph: {
     type: "website",
     siteName: "Traum Studio",

@@ -35,6 +35,23 @@ const faqGroups = [
       ["How do I restore a purchase?", "Use Restore purchases in the game settings with the same Google Play account used for the original purchase."],
     ],
   },
+  {
+    app: studioApps.find((app) => app.slug === "luma")!,
+    items: [
+      ["Can I download Luma from this website?", "Luma Vault is currently a development preview for Android and Windows. No public download is linked here yet. Contact Traum Studio for availability; use test credentials while evaluating the preview."],
+      ["Does Luma need cloud sync?", "No. The vault works offline. Optional encrypted sync can connect your devices through Google Drive or a compatible folder provider. Keep independent, password-verified backups as well."],
+      ["What should I send when asking for help?", "Include your app version, Android or Windows version, and a description of the issue. Never send passwords, vault files, recovery keys, or authenticator QR codes."],
+    ],
+  },
+  {
+    app: studioApps.find((app) => app.slug === "aeri")!,
+    items: [
+      ["What is Aeri?", "Aeri is Traum Studio’s touchless Android gesture app. Its development preview maps face gestures, hand gestures, and voice commands to actions you choose. Contact the studio for availability."],
+      ["How do I try a gesture without triggering an action?", "Use detection tests or Start rehearsal · actions off. Calibrate sensitivity and hold times, then explicitly start a real session when you are ready."],
+      ["What is the difference between Pause and Stop?", "Pause blocks regular actions while keeping sensors active for a configured resume gesture. Stop ends the session and releases sensors. Both controls are available in the session notification."],
+      ["Why does Aeri ask for camera, microphone, or Accessibility access?", "Camera access supports face and hand gestures, microphone access supports voice control, and Accessibility performs the actions you assign. Only grant the permissions for the modes you intend to use."],
+    ],
+  },
 ];
 
 export default function SupportPage() {

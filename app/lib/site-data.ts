@@ -1,12 +1,14 @@
 export type StudioApp = {
-  slug: "taproutine" | "math-alarm" | "hide-and-seek";
+  slug: "taproutine" | "math-alarm" | "hide-and-seek" | "luma" | "aeri";
   name: string;
   eyebrow: string;
   tagline: string;
   description: string;
   href: string;
-  playUrl: string;
-  theme: "lime" | "coral" | "aqua";
+  playUrl?: string;
+  platform?: string;
+  preview?: boolean;
+  theme: "lime" | "coral" | "aqua" | "mint" | "violet";
   features: string[];
 };
 
@@ -49,6 +51,29 @@ export const studioApps: StudioApp[] = [
       "https://play.google.com/store/search?q=Hide%20and%20Seek%20Traum%20Studio&c=apps",
     theme: "aqua",
     features: ["Quick rounds", "Hidden surprises", "Playful worlds"],
+  },
+  {
+    slug: "luma",
+    name: "Luma",
+    eyebrow: "Password manager",
+    tagline: "A calmer home for your passwords.",
+    description: "Keep passwords, notes, and authenticator codes together in an encrypted vault. Organize on Android and Windows, with optional encrypted sync between devices.",
+    href: "/apps/luma",
+    platform: "Android & Windows",
+    preview: true,
+    theme: "mint",
+    features: ["Encrypted vault", "Authenticator codes", "Verified backups"],
+  },
+  {
+    slug: "aeri",
+    name: "Aeri",
+    eyebrow: "Touchless control",
+    tagline: "Your gestures. Your shortcuts.",
+    description: "Control Android with face gestures, hand gestures, and voice commands. Choose a trigger, assign an action, and build shortcuts that work your way.",
+    href: "/apps/aeri",
+    preview: true,
+    theme: "violet",
+    features: ["Face & hand gestures", "Offline voice", "Custom shortcuts"],
   },
 ];
 

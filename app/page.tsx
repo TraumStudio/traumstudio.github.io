@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Android Apps & Games",
-  description: "Discover TapRoutine, Math Alarm, Hide & Seek, and future Android apps from independent software studio Traum Studio.",
+  description: "Discover TapRoutine, Math Alarm, Hide & Seek, Luma password manager, and Aeri touchless control from Traum Studio.",
 };
 
 export default function Home() {
@@ -24,7 +24,7 @@ export default function Home() {
               <a className="button button--accent" href="#apps">Explore our apps <span aria-hidden="true">↓</span></a>
               <a className="button button--ghost" href={developerPlayUrl} target="_blank" rel="noreferrer">Google Play <span aria-hidden="true">↗</span></a>
             </div>
-            <div className="hero-proof" aria-label="Studio facts"><span><strong>3</strong> ideas to explore</span><span>Built for <strong>Android</strong></span></div>
+            <div className="hero-proof" aria-label="Studio facts"><span><strong>{studioApps.length}</strong> ideas to explore</span><span>Built for <strong>Android</strong></span></div>
           </div>
           <div className="hero-art" aria-label="Traum Studio app collection">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -44,7 +44,7 @@ export default function Home() {
       <section className="section apps-section" id="apps">
         <div className="shell">
           <div className="section-topline" data-reveal>
-            <SectionHead eyebrow="Our apps" title="Made for real life." copy="Three distinct Android experiences, one shared standard: useful, understandable, and carefully made." />
+            <SectionHead eyebrow="Our apps" title="Made for real life." copy="From everyday tools to new ideas in development, every app shares one standard: useful, understandable, and carefully made." />
             <a className="text-link section-link" href="/apps">View all apps <span aria-hidden="true">→</span></a>
           </div>
           <div className="app-grid">{studioApps.map((app, index) => <AppCard app={app} featured={index === 0} key={app.slug} />)}</div>
@@ -98,7 +98,7 @@ export default function Home() {
       </section>
 
       <section className="studio-band" data-scroll-scene="band"><div className="shell studio-band-grid">
-        <div><span className="big-stat">3</span><span>Apps</span></div>
+        <div><span className="big-stat">{studioApps.length}</span><span>Apps & previews</span></div>
         <div><span className="big-stat">1</span><span>Independent studio</span></div>
         <div><span className="big-stat big-stat--word">Android</span><span>Built mobile-first</span></div>
       </div></section>

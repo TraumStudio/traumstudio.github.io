@@ -75,6 +75,8 @@ export function AppIcon({ app, size = "regular" }: { app: StudioApp; size?: "sma
       {app.slug === "taproutine" && <span className="routine-glyph"><i /><i /><i /></span>}
       {app.slug === "math-alarm" && <span className="math-glyph">×</span>}
       {app.slug === "hide-and-seek" && <span className="seek-glyph"><i /><i /><b /></span>}
+      {app.slug === "luma" && <svg className="product-glyph" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="7" y="14" width="18" height="14" rx="4" /><path d="M11 14V9a5 5 0 0 1 10 0v5M16 20v3" /></svg>}
+      {app.slug === "aeri" && <svg className="product-glyph" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M7 22c7 0 4-12 10-12 6 0 2 15 8 15M5 16c5 0 3-11 9-11M12 27c5 0 5-9 8-9" /><circle cx="26" cy="6" r="2" /></svg>}
     </div>
   );
 }
@@ -89,7 +91,8 @@ export function AppCard({ app, featured = false }: { app: StudioApp; featured?: 
       </div>
       <div className="card-actions">
         <a className="text-link" href={app.href}>Learn more <span aria-hidden="true">→</span></a>
-        <a className="icon-link" href={app.playUrl} target="_blank" rel="noreferrer" aria-label={`Find ${app.name} on Google Play`}>↗</a>
+        {app.playUrl && <a className="icon-link" href={app.playUrl} target="_blank" rel="noreferrer" aria-label={`Find ${app.name} on Google Play`}>↗</a>}
+        {app.preview && <span className="preview-badge">In development</span>}
       </div>
     </article>
   );
@@ -104,6 +107,7 @@ export function SectionHead({ eyebrow, title, copy }: { eyebrow?: string; title:
 }
 
 export function PlayButton({ app, label = "Find it on Google Play" }: { app: StudioApp; label?: string }) {
+  if (!app.playUrl) return <a className="button button--light" href="#availability">About the preview <span aria-hidden="true">↓</span></a>;
   return (
     <a className="button button--light" href={app.playUrl} target="_blank" rel="noreferrer">
       <span className="play-triangle" aria-hidden="true">▶</span><span><small>GET IT ON</small>{label}</span>
@@ -120,7 +124,7 @@ export function AppPageHero({ app, children }: { app: StudioApp; children?: Reac
     <section className={`app-page-hero app-page-hero--${app.theme}`}>
       <div className="shell app-page-hero-grid">
         <div>
-          <span className="eyebrow">{app.eyebrow} · Android</span>
+          <span className="eyebrow">{app.eyebrow} · {app.platform ?? "Android"}</span>
           <div className="app-title-line"><AppIcon app={app} size="large" /><h1>{app.name}</h1></div>
           <p className="app-page-tagline">{app.tagline}</p><p className="app-page-description">{app.description}</p>
           <div className="hero-actions"><PlayButton app={app} /><a className="button button--ghost" href="/support">Get support</a></div>

@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Privacy Center",
-  description: "Privacy policies for TapRoutine and TapRoutine Pro, plus policy drafts for other Traum Studio apps.",
+  description: "Privacy policies for TapRoutine and TapRoutine Pro, policy drafts, and development privacy overviews for Luma and Aeri.",
 };
 
 export default function PrivacyPage() {
@@ -18,7 +18,7 @@ export default function PrivacyPage() {
       <section className="section page-section page-section--tight"><div className="shell privacy-cards">
         <a href="/privacy/taproutine" className="privacy-card"><AppIcon app={studioApps[0]} /><span><small>Free edition & in-app Premium</small><strong>TapRoutine</strong><em>Read privacy policy →</em></span></a>
         <a href="/privacy/taproutine-pro" className="privacy-card"><AppIcon app={studioApps[0]} /><span><small>Separate paid edition</small><strong>TapRoutine Pro</strong><em>Read privacy policy →</em></span></a>
-        {studioApps.slice(1).map((app) => <a href={`/privacy/${app.slug}`} className={`privacy-card privacy-card--${app.theme}`} key={app.slug}><AppIcon app={app} /><span><small>Privacy policy draft</small><strong>{app.name}</strong><em>Read draft →</em></span></a>)}
+        {studioApps.slice(1).map((app) => <a href={app.preview ? `${app.href}#privacy` : `/privacy/${app.slug}`} className={`privacy-card privacy-card--${app.theme}`} key={app.slug}><AppIcon app={app} /><span><small>{app.preview ? "Development preview" : "Privacy policy draft"}</small><strong>{app.name}</strong><em>{app.preview ? "Privacy overview →" : "Read draft →"}</em></span></a>)}
       </div></section>
       <section className="section privacy-principles"><div className="shell privacy-principles-grid">
         <h2>Our privacy principles.</h2>

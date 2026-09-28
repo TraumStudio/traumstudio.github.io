@@ -4,6 +4,12 @@ A static website for Traum Studio and its Android apps. It includes a dusk-blue 
 
 ## Before publishing
 
+Luma (Luma Vault) and Aeri are listed as development previews, with product pages,
+support FAQs, and privacy overviews based on their local project documentation.
+Neither has a verified public store or download URL, so their calls to action
+explain availability and link to contact instead. Replace the preview status only
+when a release is ready. The app count and future slots follow the collection.
+
 1. Replace the temporary Google Play search URLs in `app/lib/site-data.ts` with the final developer and app URLs.
 2. Public contact is `traumclatix@gmail.com`, confirmed by the developer. Update `supportEmail` in `app/lib/site-data.ts` when it changes.
 3. Illustrative app previews are labeled; replace them with actual screenshots when available.
