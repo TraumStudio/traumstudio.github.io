@@ -4,6 +4,10 @@ A static website for Traum Studio and its Android apps. It includes a dusk-blue 
 
 ## Before publishing
 
+Solvewake is the alarm app previously listed as Math Alarm. Its product and
+privacy pages use `/apps/solvewake` and `/privacy/solvewake`; the old `math-alarm`
+URLs remain compatible aliases. Feature copy reflects the local Android project.
+
 Luma (Luma Vault) and Aeri are listed as development previews, with product pages,
 support FAQs, and privacy overviews based on their local project documentation.
 Neither has a verified public store or download URL, so their calls to action
@@ -13,7 +17,7 @@ when a release is ready. The app count and future slots follow the collection.
 1. Replace the temporary Google Play search URLs in `app/lib/site-data.ts` with the final developer and app URLs.
 2. Public contact is `traumclatix@gmail.com`, confirmed by the developer. Update `supportEmail` in `app/lib/site-data.ts` when it changes.
 3. Illustrative app previews are labeled; replace them with actual screenshots when available.
-4. TapRoutine policies were checked against the local free v2.3 and Pro v1.0 source on September 4, 2026. This is not legal certification or Play approval. Review final release bundles, SDK settings, target audience, Data safety answers, and applicable legal obligations before submission. Math Alarm, Hide & Seek, and Terms remain drafts.
+4. TapRoutine policies were checked against the local free v2.3 and Pro v1.0 source on September 4, 2026. This is not legal certification or Play approval. Review final release bundles, SDK settings, target audience, Data safety answers, and applicable legal obligations before submission. Solvewake, Hide & Seek, and Terms remain drafts.
 
 ## Privacy URLs
 

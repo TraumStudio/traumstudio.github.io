@@ -22,9 +22,10 @@ const faqGroups = [
   {
     app: studioApps[1],
     items: [
-      ["How do I change the math difficulty?", "Open an alarm, choose Challenge, and select Easy, Medium, Hard, or Extreme before saving."],
+      ["How do I change the math difficulty?", "Edit an alarm and select Easy, Medium, Hard, or Extreme before saving. The equation clock also has its own difficulty setting."],
       ["Why didn’t my alarm sound?", "Confirm the alarm permission, notification permission, volume, and battery settings. Some Android devices add manufacturer-specific battery restrictions."],
-      ["Can I use Math Alarm without snooze?", "Yes. Snooze behavior can be configured per alarm when the feature is available in the released app."],
+      ["Can I use Solvewake without snooze?", "Yes. Set the alarm’s maximum snoozes to zero. You can also choose a snooze duration and limit, and optionally increase the math difficulty after each snooze."],
+      ["Which themes does Solvewake include?", "Choose Neon, Cyberpunk, Aurora, or Daylight to change the look of your clock and alarms."],
     ],
   },
   {

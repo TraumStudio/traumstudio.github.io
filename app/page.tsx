@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Android Apps & Games",
-  description: "Discover TapRoutine, Math Alarm, Hide & Seek, Luma password manager, and Aeri touchless control from Traum Studio.",
+  description: "Discover TapRoutine, Solvewake, Hide & Seek, Luma password manager, and Aeri touchless control from Traum Studio.",
 };
 
 export default function Home() {

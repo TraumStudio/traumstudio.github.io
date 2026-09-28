@@ -1,5 +1,5 @@
 export type StudioApp = {
-  slug: "taproutine" | "math-alarm" | "hide-and-seek" | "luma" | "aeri";
+  slug: "taproutine" | "solvewake" | "hide-and-seek" | "luma" | "aeri";
   name: string;
   eyebrow: string;
   tagline: string;
@@ -27,17 +27,17 @@ export const studioApps: StudioApp[] = [
     features: ["Tap automation", "Gesture recording", "Custom routines"],
   },
   {
-    slug: "math-alarm",
-    name: "Math Alarm",
+    slug: "solvewake",
+    name: "Solvewake",
     eyebrow: "Productivity",
     tagline: "An alarm your brain can’t ignore.",
     description:
-      "Stop oversleeping by solving a math challenge before dismissing your alarm. Choose the difficulty and make sure you’re awake.",
-    href: "/apps/math-alarm",
+      "Read the time as equations and solve math challenges to dismiss your alarm. Choose your difficulty, customize snooze, and wake up your way.",
+    href: "/apps/solvewake",
     playUrl:
-      "https://play.google.com/store/search?q=Math%20Alarm%20Traum%20Studio&c=apps",
+      "https://play.google.com/store/search?q=Solvewake%20Traum%20Studio&c=apps",
     theme: "coral",
-    features: ["Easy to extreme", "Math challenges", "Custom alarms"],
+    features: ["Equation clock", "Math challenges", "Custom alarms"],
   },
   {
     slug: "hide-and-seek",

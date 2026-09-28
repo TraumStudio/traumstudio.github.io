@@ -10,7 +10,7 @@ test("exports the Traum Studio homepage", async () => {
   assert.match(html, /Traum Studio/);
   assert.match(html.replace(/<[^>]+>/g, " "), /Apps with\s+purpose/);
   assert.match(html, /TapRoutine/);
-  assert.match(html, /Math Alarm/);
+  assert.match(html, /Solvewake/);
   assert.match(html, /Hide &amp; Seek|Hide & Seek/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/);
 });
@@ -156,6 +156,8 @@ test("exports key product and trust pages", async () => {
   const pages = [
     "apps/taproutine.html",
     "apps/math-alarm.html",
+    "apps/solvewake.html",
+    "privacy/solvewake.html",
     "apps/hide-and-seek.html",
     "support.html",
     "privacy.html",

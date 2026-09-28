@@ -73,7 +73,7 @@ export function AppIcon({ app, size = "regular" }: { app: StudioApp; size?: "sma
   return (
     <div className={`app-icon app-icon--${app.theme} app-icon--${size}`} aria-hidden="true">
       {app.slug === "taproutine" && <span className="routine-glyph"><i /><i /><i /></span>}
-      {app.slug === "math-alarm" && <span className="math-glyph">×</span>}
+      {app.slug === "solvewake" && <span className="math-glyph">×</span>}
       {app.slug === "hide-and-seek" && <span className="seek-glyph"><i /><i /><b /></span>}
       {app.slug === "luma" && <svg className="product-glyph" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="7" y="14" width="18" height="14" rx="4" /><path d="M11 14V9a5 5 0 0 1 10 0v5M16 20v3" /></svg>}
       {app.slug === "aeri" && <svg className="product-glyph" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M7 22c7 0 4-12 10-12 6 0 2 15 8 15M5 16c5 0 3-11 9-11M12 27c5 0 5-9 8-9" /><circle cx="26" cy="6" r="2" /></svg>}
